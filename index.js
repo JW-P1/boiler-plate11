@@ -3,22 +3,22 @@ const app = express()
 const port = 5000
 const bodyParser = require('body-parser')
 const { User } =require("./models/User");
-
+const config = require('./config/key')
 //aplication/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));
 
 //aplication/json
-app.use(bodyParser.json());
+app.use(express.json());
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://sws2664:sws690215@cluster905858.dufhjj5.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('config.mongoURI')
 .then(() => console.log('MongoDB ...'))
 .catch(err => console.log(err))
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World! 123')
 })
 
 
